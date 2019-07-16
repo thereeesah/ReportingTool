@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var i = 0;
 
 mongoose.connect('mongodb://localhost/test');
 
@@ -21,7 +22,13 @@ const addTestObject = async () => {
 async function getTestObjects() {
     try {
         const testObjects = await testModel.find().exec();
-        console.log(testObjects[0].testField);
+        //console.log(testObjects[0].testField);
+
+        for (i = 0; i < testObjects.length; i++) {
+            console.log("object number: " + i + " | object itself: " + testObjects[0].testField);
+        }
+
+        console.log("im good");
     } catch (error) {
         
         console.log(error.message);
